@@ -1,3 +1,4 @@
 export type TUrl = {
-	text: string
+	url: string
+	shortUrl: string
 }

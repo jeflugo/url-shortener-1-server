@@ -3,9 +3,15 @@ import { TUrl } from '../types'
 
 const UrlSchema = new mongoose.Schema<TUrl>(
 	{
-		text: {
+		url: {
 			type: String,
 			required: true,
+			unique: true,
+		},
+		shortUrl: {
+			type: String,
+			required: true,
+			unique: true,
 		},
 	},
 	{

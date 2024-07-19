@@ -3,7 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
 import connectDB from './config/mongo'
-import Url from './models/urls'
+import urlsRouter from './routes/urls'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -18,10 +18,6 @@ app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => res.send('Home'))
 
-app.post('/short-url', async (req, res) => {
-	const newUrl = await Url.create(req.body)
-
-	res.json(newUrl)
-})
+app.use('/urls', urlsRouter)
 
 app.listen(PORT, () => console.log(`Running on port ${PORT}...`))
