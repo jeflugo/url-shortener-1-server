@@ -10,7 +10,11 @@ const PORT = process.env.PORT || 3000
 
 connectDB().then(() => console.log('DB connected...'))
 
-app.use(cors())
+app.use(
+	cors({
+		origin: process.env.CLIENT_URL,
+	})
+)
 app.use(morgan('tiny'))
 
 app.use(express.json())
